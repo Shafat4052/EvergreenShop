@@ -1,0 +1,77 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Place an Order - Evergreen Book Shop</title>
+    <style>
+        body { font-family: sans-serif; background-color: #f1efeb; margin: 0; padding: 0; }
+        .content-box { background-color: white; max-width: 500px; margin: 50px auto; padding: 30px; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        h1 { color: #333; text-align: center; }
+        label { font-weight: bold; color: #555; display: block; margin-top: 15px; }
+        input, select, textarea { width: 100%; padding: 10px; margin-top: 5px; border: 1px solid #ccc; border-radius: 5px; box-sizing: border-box; font-family: sans-serif; }
+        .submit-btn { display: block; width: 100%; background-color: #25D366; color: white; padding: 15px; border: none; border-radius: 5px; font-weight: bold; font-size: 18px; margin-top: 20px; cursor: pointer; }
+        .submit-btn:hover { background-color: #1ebe5d; }
+        .back-btn { display: block; text-align: center; margin-top: 20px; color: #333; text-decoration: underline; }
+    </style>
+</head>
+<body>
+
+    <!-- Don't forget to paste your Menu Bar here later! -->
+
+    <div class="content-box">
+        <h1>Place Your Order</h1>
+        
+        <form id="orderForm">
+            <label>Your Full Name:</label>
+            <input type="text" id="customerName" placeholder="e.g. Aamir Khan" required>
+
+            <label>What are you looking for?</label>
+            <select id="itemCategory">
+                <option value="Academic Books">Academic Books (B.Tech, 11th, 12th)</option>
+                <option value="Competitive Exams">Competitive Exams (NEET, JEE, UPSC)</option>
+                <option value="Novels & Literature">Novels & Islamic Literature</option>
+                <option value="Stationery">Stationery & Office Supplies</option>
+                <option value="Sports Gear">Sports Gear (Cricket, Football, etc.)</option>
+            </select>
+
+            <label>Specific Book/Item Name:</label>
+            <input type="text" id="itemName" placeholder="e.g. NCERT Physics Class 11" required>
+
+            <label>Delivery Address in Sogam:</label>
+            <textarea id="address" rows="3" placeholder="Enter your full address" required></textarea>
+
+            <!-- This button runs the JavaScript below to send the WhatsApp message -->
+            <button type="submit" class="submit-btn">Send Order via WhatsApp</button>
+        </form>
+
+        <a href="index.html" class="back-btn">Back to Home</a>
+    </div>
+
+    <script>
+        // This tiny bit of code handles the WhatsApp formatting!
+        document.getElementById("orderForm").addEventListener("submit", function(event) {
+            event.preventDefault(); // Prevents the page from refreshing
+
+            // Get the values the customer typed in
+            let name = document.getElementById("customerName").value;
+            let category = document.getElementById("itemCategory").value;
+            let item = document.getElementById("itemName").value;
+            let address = document.getElementById("address").value;
+
+            // Format the WhatsApp message beautifully
+            let whatsappMessage = "Hello Evergreen Book Shop! I would like to place an order.%0a%0a" + 
+                                  "*Name:* " + name + "%0a" +
+                                  "*Category:* " + category + "%0a" +
+                                  "*Item Needed:* " + item + "%0a" +
+                                  "*Address:* " + address;
+
+            // Send it to your shop's number
+            let whatsappUrl = "https://wa.me/919596571929?text=" + whatsappMessage;
+            
+            // Open WhatsApp
+            window.open(whatsappUrl, '_blank');
+        });
+    </script>
+
+</body>
+</html>

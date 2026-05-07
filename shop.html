@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Shop Catalog - Evergreen Book Shop</title>
+    <style>
+
+        body { font-family: sans-serif; background-color: #f1efeb; margin: 0; padding: 0; }
+        
+        /* Menu Bar Style */
+        .navbar { background-color: #333; padding: 15px; text-align: center; }
+        .navbar a { color: white; margin: 0 15px; text-decoration: none; font-weight: bold; }
+        
+        /* Search Bar Style */
+        .search-container { text-align: center; margin: 40px 20px; }
+        #searchInput { width: 100%; max-width: 600px; padding: 15px; font-size: 18px; border: 2px solid #ccc; border-radius: 30px; outline: none; }
+        
+        /* Product Grid Style */
+        .grid-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 20px; padding: 20px; max-width: 1200px; margin: auto; }
+        .product-card { background: white; padding: 20px; text-align: center; border-radius: 10px; box-shadow: 0 4px 8px rgba(0,0,0,0.1); }
+        .product-card h3 { color: #333; font-size: 20px; margin-bottom: 5px; }
+        .product-card p { color: #777; font-size: 16px; margin-top: 0; }
+        .price { font-weight: bold; color: #25D366; font-size: 20px; margin-top: 10px; display: block; }
+        .buy-btn { display: inline-block; margin-top: 15px; background-color: #333; color: white; padding: 10px 20px; text-decoration: none; border-radius: 5px; }
+    </style>
+    
+</head>
+<body>
+
+    <!-- Menu Bar -->
+    <div class="navbar">
+        <a href="index.html">Home</a>
+        <a href="shop.html">Shop Catalog</a>
+        <a href="order.html">Order Now</a>
+        <a href="about.html">About</a>
+        <a href="contact.html">Contact</a>
+    </div>
+
+    <!-- The Search Bar -->
+    <div class="search-container">
+        <h2>Browse Our Full Catalog</h2>
+        <input type="text" id="searchInput" placeholder="🔍 Search for books, sports gear, stationery...">
+    </div>
+
+    <!-- The Products -->
+    <div class="grid-container" id="productGrid">
+        
+        <div class="product-card">
+            <h3>NCERT Books Class 5,6,7,8,9,10,11,12</h3>
+            <p>Academic Books</p>
+            <span class="price">MRP 450-950 </span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3> Cricket Bat</h3>
+            <p>Sports Gear</p>
+            <span class="price">MRP 200-4000</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3>Premium Notebooks</h3>
+            <p>Stationery</p>
+            <span class="price">MRP 10-450</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3>Quran Sharif</h3>
+            <p>Islamic Literature</p>
+            <span class="price">MRP 100-800</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3>UPSC General Studies</h3>
+            <p>Competitive Exams</p>
+            <span class="price">MRP 650-1200</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3>Nivia Football</h3>
+            <p>Sports Gear</p>
+            <span class="price">MRP 550-2000</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+        <div class="product-card">
+            <h3>School Bags</h3>
+            <p>kids,Boys,Girls</p>
+            <span class="price">MRP 120-1200</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+        <div class="product-card">
+            <h3>JKBOSE BOOKS</h3>
+            <p>CLASS(5,6,7,8,9,10)</p>
+            <span class="price">MRP 550-1100</span>
+            <a href="order.html" class="buy-btn">Order Item</a>
+        </div>
+
+
+    </div>
+
+    <!-- The JavaScript that makes the Search Bar work! -->
+    <script>
+        document.getElementById('searchInput').addEventListener('keyup', function() {
+            // Get what the user typed and make it lowercase
+            let filter = this.value.toLowerCase();
+            
+            // Get all the product cards
+            let cards = document.getElementsByClassName('product-card');
+
+            // Loop through all cards and hide those that don't match the search
+            for (let i = 0; i < cards.length; i++) {
+                let title = cards[i].getElementsByTagName('h3')[0].innerText.toLowerCase();
+                let category = cards[i].getElementsByTagName('p')[0].innerText.toLowerCase();
+                
+                // If the title OR category contains the searched word, show it!
+                if (title.includes(filter) || category.includes(filter)) {
+                    cards[i].style.display = "";
+                } else {
+                    // Otherwise, hide it!
+                    cards[i].style.display = "none";
+                }
+            }
+        });
+    </script>
+
+</body>
+</html>

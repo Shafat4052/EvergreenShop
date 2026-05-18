@@ -302,39 +302,105 @@ footer p { margin: 5px 0; }
         font-size: 24px; /* Makes title smaller on phone so it fits */
     }
 }
-    </style>
+  /* --- MOBILE RESPONSIVE FIXES --- */
+@media (max-width: 768px) {
+  /* 1. Fix the Header Spacing */
+  header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 15px;
+    flex-wrap: wrap; 
+  }
+
+  /* 2. Fix the Logo Size on Phones */
+  .logo {
+    max-width: 60%;
+    display: flex;
+    align-items: center;
+  }
+  .logo img { height: 40px !important; }
+  .logo span { font-size: 12px; line-height: 1.2; }
+
+  /* 3. Hide Laptop Menu, Show Hamburger */
+  .nav-links { display: none !important; }
+  .hamburger-btn {
+    display: block;
+    font-size: 28px;
+    background: none;
+    border: none;
+    color: #1a472a;
+    cursor: pointer;
+  }
+
+  /* 4. Style the Mobile Dropdown Menu */
+  .mobile-menu {
+    display: none; 
+    flex-direction: column;
+    width: 100%;
+    background-color: white;
+    margin-top: 10px;
+    box-shadow: 0px 4px 6px rgba(0,0,0,0.1);
+  }
+  .mobile-menu.active { display: flex; }
+  .mobile-menu a {
+    padding: 15px;
+    border-bottom: 1px solid #eee;
+    color: #333;
+    font-weight: bold;
+  }
+
+  /* 5. Fix "What We Offer" Cards (Stacks them 1 by 1) */
+  .grid-container { 
+    display: flex;
+    flex-direction: column; 
+    align-items: center;
+    width: 100%;
+  }
+
+  /* Makes each card take up the screen neatly */
+  .grid-container > div {
+    width: 90% !important;
+    margin-bottom: 20px;
+} 
+   </style>
 </head>
 <body>
 
     <header>
-        <div class="logo">
-            <img src="logo.png.jpg" alt="Evergreen logo" style="height: 60px;margin-right:15px;">EVERGREEN BOOK SHOP SOGAM
-        </div>
-       <button class="hamburger-btn" id="menu-toggle">
-  &#9776; 
-</button>
+    <div class="logo">
+        <img src="logo.png.jpg" alt="Evergreen logo" style="height: 60px; margin-right:15px;">
+        <span>EVERGREEN BOOK SHOP SOGAM</span>
+    </div>
 
-<nav class="nav-links" style="margin-left:80px;">
-    <a href="#">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#featured">New Arrivals</a>
-    <a href="#about">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="order.html">Order Now</a>
-    <a href="shop.html">Shop Catalog</a>
-</nav>
+    <button class="hamburger-btn" id="menu-toggle">
+        &#9776; 
+    </button>
 
-<nav class="mobile-menu" id="dropdown-menu">
-    <a href="#">Home</a>
-    <a href="#categories">Categories</a>
-    <a href="#featured">New Arrivals</a>
-    <a href="#about">About</a>
-    <a href="contact.html">Contact</a>
-    <a href="order.html">Order Now</a>
-    <a href="shop.html">Shop Catalog</a>
-</nav>
-        <a href="https://wa.me/919596571929" class="cta-btn-small"><i class="fab fa-whatsapp"></i> Chat</a>
-    </header>
+    <nav class="nav-links">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#featured">New Arrivals</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html">Order Now</a>
+        <a href="shop.html">Shop Catalog</a>
+    </nav>
+
+    <nav class="mobile-menu" id="dropdown-menu">
+        <a href="#home">Home</a>
+        <a href="#categories">Categories</a>
+        <a href="#featured">New Arrivals</a>
+        <a href="#about">About</a>
+        <a href="contact.html">Contact</a>
+        <a href="order.html">Order Now</a>
+        <a href="shop.html">Shop Catalog</a>
+    </nav>
+
+    <a href="https://wa.me/919906652499" class="cta-btn-small" style="margin-left: 15px;">
+        <i class="fab fa-whatsapp"></i> Chat
+    </a>
+</header>
 
     <section class="hero">
         <h1>Fueling Minds, One Page at a Time</h1>
@@ -714,5 +780,14 @@ footer p { margin: 5px 0; }
             }
         }, 1000);
     </script>
+  <script>
+  // Mobile Menu Toggle
+  const menuBtn = document.getElementById('menu-toggle');
+  const dropdownMenu = document.getElementById('dropdown-menu');
+
+  menuBtn.addEventListener('click', function() {
+    dropdownMenu.classList.toggle('active');
+  });
+</script>  
 </body>
 </html>
